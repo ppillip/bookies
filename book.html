@@ -1,0 +1,52 @@
+<body>
+<h2>&nbsp;</h2>
+{{> userList }}
+</body>
+
+<template name="userList">
+  <table id="userListTable" class="table table-bordered span12" id="studentList">
+    <caption style="vertical-align:bottom;margin-bottom: 5px;border:0px solid red;">
+      <span class="pull-left ">Student List</span>
+      <button class="pull-right btn btn-danger btn-mini" style="margin-right:5px; vertical-align: bottom;"><i class="icon-plus-sign"></i></button>
+    </caption>
+    <thead>
+    <tr>
+      <th>사용자명</th>
+      <th>Mail Address</th>
+      <th>Phone Number</th>
+      <th>Reg Date</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr name="regUser" class="info hide">
+        <td><input type="text" class="span3" name="userName" placeholder="Type User Name" value="{{userName}}"/></td>
+        <td><input type="text" class="span3" name="userEmail" placeholder="Type User Email" value="{{userEmail}}"/></td>
+        <td><input type="text" class="span3" name="userPhone" placeholder="Type User Phone Number" value="{{userPhone}}"/></td>
+        <td colspan="2">
+           <button name="apply" class="btn btn-mini btn-error"><i class="icon-ok-sign"></i> Apply</button>
+           <button name="cancel" class="btn btn-mini btn-error"><i class="icon-ok-sign"></i> Cancel</button>
+        </td>
+      </tr>
+      {{#each lists}}
+      <tr name="{{_id}}">
+        <td><input type="text" class="span3" name="userName" value="{{userName}}"/></td>
+        <td><input type="text" class="span3" name="userEmail" value="{{userEmail}}"/></td>
+        <td><input type="text" class="span3" name="userPhone" value="{{userPhone}}"/></td>
+        <td>{{timeago registDate}}</td>
+        <td>
+          <button class="btn btn-mini btn-warning" name="remove" _id="{{_id}}">
+            <i class="icon-remove-sign"></i> Delete
+          </button>
+          <button class="btn btn-mini btn-info" name="adjust" _id="{{_id}}">
+            <i class="icon-adjust"></i> Update
+          </button>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
+
+
+
